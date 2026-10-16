@@ -3,9 +3,13 @@
 
 Hospital::Hospital(int id, string name, int locationNode,
                    int availableBeds, vector<string> facilities, bool isOpen)
-    : id(id), name(name), locationNode(locationNode),
-      availableBeds(availableBeds), facilities(facilities), isOpen(isOpen)
 {
+    this->id = id;
+    this->name = name;
+    this->locationNode = locationNode;
+    this->availableBeds = availableBeds;
+    this->facilities = facilities;
+    this->isOpen = isOpen;
 }
 
 int Hospital::getId() const
