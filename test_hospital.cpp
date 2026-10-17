@@ -8,37 +8,13 @@ int main()
 {
     HospitalManager manager;
 
-    Hospital h1(
-        1,
-        "City Care Hospital",
-        2,
-        0,
-        {"General", "ICU"},
-        true);
+    Hospital h1(1, "City Care Hospital", 2, 0, {"General", "ICU"}, true);
 
-    Hospital h2(
-        2,
-        "Trauma Centre",
-        3,
-        5,
-        {"Trauma Care", "ICU", "General"},
-        true);
+    Hospital h2(2, "Trauma Centre", 3, 5, {"Trauma Care", "ICU", "General"}, true);
 
-    Hospital h3(
-        3,
-        "Heart Hospital",
-        4,
-        3,
-        {"Cardiac Care", "ICU"},
-        true);
+    Hospital h3(3, "Heart Hospital", 4, 3, {"Cardiac Care", "ICU"}, true);
 
-    Hospital h4(
-        4,
-        "Closed Trauma Hospital",
-        5,
-        4,
-        {"Trauma Care", "General"},
-        false);
+    Hospital h4(4, "Closed Trauma Hospital", 5, 4, {"Trauma Care", "General"}, false);
 
     manager.addHospital(h1);
     manager.addHospital(h2);
