@@ -1,6 +1,6 @@
 Emergency Ambulance Allocator
 
-A C++ project that sends a patient to the best hospital, not just the nearest one.
+A  project that sends a patient to the best hospital, not just the nearest one.
 
 Problem
 
@@ -56,7 +56,6 @@ How to Compile and Run
 g++ -std=c++17 main.cpp hospital-management/Hospital.cpp hospital-management/HospitalManager.cpp -Ihospital-management -Iemergency-management -o allocator
 allocator.exe
 
-(On Linux/Mac, run ./allocator.)
 
 Demo Example
 
@@ -66,7 +65,6 @@ Metro Hospital is the nearest, but it has 0 beds, so it is skipped.
 Heart Care is selected and one of its beds is reserved.
 Team
 
-Add your team member names here.
 
 Future Work
 Load hospitals from a file
