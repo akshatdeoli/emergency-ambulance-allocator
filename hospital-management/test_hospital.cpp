@@ -45,8 +45,8 @@ int main()
         }
     }
 
-    cout << "\nRemoving 2 beds from Trauma Centre..." << endl;
-    manager.updateHospitalBeds(2, -2);
+    cout << "\nRemoving 1 beds from Trauma Centre..." << endl;
+    manager.updateHospitalBeds(2, -1);
 
     Hospital *traumaHospital = manager.findHospitalById(2);
 
