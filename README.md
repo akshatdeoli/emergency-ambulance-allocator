@@ -1,75 +1,73 @@
-Emergency Ambulance Allocator
+Emergency Ambulance Allocator 🚑
 
-A  project that sends a patient to the best hospital, not just the nearest one.
+A C++ project that helps allocate emergency patients to the most suitable hospital based on road distance, bed availability, hospital facilities, and emergency severity.
 
-Problem
+About the Project
 
-In an emergency, ambulances usually go to the nearest hospital without checking whether it can actually treat the patient. That hospital may be closed, full, or missing the required facility or doctor.
+In an emergency, choosing the nearest hospital isn't always the best option. It might be full, closed, or unable to provide the treatment a patient needs.
 
-Our Solution
+The Emergency Ambulance Allocator aims to solve this problem by considering more than just distance. It finds hospitals that can actually handle the emergency and selects the most suitable one based on the patient's condition.
 
-The user enters:
+How It Works
 
-Patient location (a junction on the city road map)
-Severity: RED (life threatening), YELLOW (serious), GREEN (minor)
-Emergency type: Cardiology, Trauma, General, ICU
+The user provides three details:
+
+Patient Location: A junction (node) on the city road map.
+
+Severity: RED (life-threatening), YELLOW (serious), or GREEN (minor).
+
+Emergency Type: Cardiology, Trauma, General, or ICU.
 
 The system then:
 
-Finds the shortest road distance to every hospital (Dijkstra's algorithm)
-Removes hospitals that are closed, have no free beds, or lack the required facility
-Scores the remaining hospitals based on severity
-Ranks them with a priority queue (min-heap) and picks the best one
-Reserves a bed at that hospital
-Severity	Strategy
-RED	Nearest capable hospital (speed matters most)
-YELLOW	Balance of distance and free beds
-GREEN	Prefers a less crowded hospital
+Calculates the shortest road distance from the patient's location to every hospital using Dijkstra's algorithm.
+
+Filters out hospitals that are closed, have no available beds, or lack the required medical facility.
+
+Evaluates the remaining hospitals according to the patient's emergency severity.
+
+Ranks the hospitals using a priority queue (min-heap).
+
+Selects the most suitable hospital and reserves one bed.
+
+Hospital Selection Strategy
+
+Different emergencies require different priorities when selecting a hospital.
+
+Severity
+
+Selection Strategy
+
+🔴 RED
+
+Prioritizes the nearest capable hospital because every second matters.
+
+🟡 YELLOW
+
+Balances distance and available beds.
+
+🟢 GREEN
+
+Prefers hospitals with more available beds to avoid overcrowding.
+
 Concepts Used
 
-OOP (C++)
+Object-Oriented Programming (OOP)
 
-Encapsulation: Hospital, Emergency (private data with getters)
-Abstraction: Scorer (abstract class)
-Inheritance and Polymorphism: RedScorer, YellowScorer, GreenScorer
-Composition: AllocationEngine uses Graph and HospitalManager
+Encapsulation: Hospital and Emergency classes keep their data private and provide access through getters.
 
-DSA
+Abstraction: Scorer is an abstract class that defines the scoring interface.
 
-Graph (adjacency list)
-Dijkstra's shortest path algorithm
-Priority queue (min-heap)
-Project Structure
-emergency-ambulance-allocator/
-├── hospital-management/
-│   ├── Hospital.h / Hospital.cpp
-│   ├── HospitalManager.h / HospitalManager.cpp
-│   └── test_hospital.cpp
-├── emergency-management/
-│   ├── Emergency.h
-│   └── Scorer.h
-├── Graph.h
-├── AllocationEngine.h
-├── main.cpp
-└── README.md
+Inheritance: RedScorer, YellowScorer, and GreenScorer inherit from the Scorer class.
 
+Polymorphism: Different scoring strategies are implemented through the same interface.
 
-How to Compile and Run
+Composition: AllocationEngine uses Graph and HospitalManager to perform hospital allocation.
 
-g++ -std=c++17 main.cpp hospital-management/Hospital.cpp hospital-management/HospitalManager.cpp -Ihospital-management -Iemergency-management -o allocator
-allocator.exe
+Data Structures and Algorithms (DSA)
 
+Graph (Adjacency List): Represents the city's road network.
 
-Demo Example
+Dijkstra's Algorithm: Finds the shortest distance from the patient's location to hospitals.
 
-Patient at node 0, severity RED, Cardiology:
-
-Metro Hospital is the nearest, but it has 0 beds, so it is skipped.
-Heart Care is selected and one of its beds is reserved.
-Team
-
-
-Future Work
-Load hospitals from a file
-Real city map with named locations
-Web frontend with a map
+Priority Queue (Min-Heap): Ranks suitable hospitals according to their scores.
